@@ -1,0 +1,12 @@
+Status-Code: 200
+Accept-Ranges: bytes
+Alt-Svc: h3=":443"; ma=93600
+Cache-Control: max-age=0, no-cache, no-store
+Content-Length: 7940
+Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+Date: Sun, 08 Feb 2026 09:30:29 GMT
+Etag: "8a0c39faa0dd5edf2c0a6ed40d2df5b1"
+Expires: Sun, 08 Feb 2026 09:30:29 GMT
+Last-Modified: Tue, 23 Dec 2025 04:09:50 GMT
+Pragma: no-cache
+Server: AmazonS3
