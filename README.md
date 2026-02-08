@@ -15,6 +15,7 @@ They deleted EFTA00020508 a few days after the media spotlighted it for certain 
 They rotated EFTA00001931 EFTA00000531    
 They redacted a painting/photo that wasn't a victim EFTA00001225  
 They deleted a file that contained statements about Donald Trump's Mar-a-Lago Club in Palm Beach, Florida EFTA00261604  
+There's files that added redactions 5 hours they were posted, the old versions are lost media, EFT00156482 EFTA00158898 EFTA00158891 EFTA00151816 EFTA00151209 EFTA00094156 EFTA00081180   
 
 EFTA00039883-EFTA00066956 in data set 9 is unlisted from page search but still accessable with the link.  
 https://www.justice.gov/epstein/doj-disclosures/data-set-9-files?page=17  
