@@ -10,10 +10,7 @@ This Python script fetches metadata (HTTP headers) for files from the U.S. Depar
 
 # Minor Notable Things
 
-They deleted all mentions of "Juan Ruiz Toro"  
-EFTA00031428  
-EFTA00009897  
-
+They deleted all mentions of "Juan Ruiz Toro"  EFTA00031428 EFTA00009897  
 They deleted EFTA00020508 a few days after the media spotlighted it for certain statements of Donald Trump  
 They rotated EFTA00001931 EFTA00000531    
 They redacted a painting/photo that wasn't a victim EFTA00001225  
