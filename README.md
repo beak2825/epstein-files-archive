@@ -6,3 +6,10 @@ This Python script fetches metadata (HTTP headers) for files from the U.S. Depar
 
 
 ![](https://komarev.com/ghpvc/?username=beak2825-epstein-files-archive&label=REPO+VIEWS)
+
+
+# Minor Notable Things
+
+They deleted all mentions of "Juan Ruiz Toro"  
+EFTA00031428  
+EFTA00009897  
