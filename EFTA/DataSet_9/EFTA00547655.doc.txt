@@ -1,0 +1,12 @@
+Status-Code: 200
+Accept-Ranges: bytes
+Alt-Svc: h3=":443"; ma=93600
+Cache-Control: max-age=0, no-cache, no-store
+Content-Length: 0
+Content-Type: application/msword
+Date: Mon, 09 Feb 2026 01:14:25 GMT
+Etag: "d41d8cd98f00b204e9800998ecf8427e"
+Expires: Mon, 09 Feb 2026 01:14:25 GMT
+Last-Modified: Fri, 30 Jan 2026 05:40:01 GMT
+Pragma: no-cache
+Server: AmazonS3
