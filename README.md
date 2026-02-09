@@ -9,7 +9,7 @@
 
 # epstein-files-archive
 This is not archiving the files themselves, this is only archiving the server responses, useful for checksum and Last-Modified
-ETags from justice.gov are made in MD5 format. (Edit: This is sometimes true, only regular files contain the MD5 with a -part at the end, but ZIP files don't match this)
+ETags from justice.gov are made in MD5 format. (Edit: the -part at the end is not included for the MD5, and zip files don't have the hash you think because they include extra folders like DATA,IMAGES,VOLUME on the DOJ direct zip downloads.)
 
 This Python script fetches metadata (HTTP headers) for files from the U.S. Department of Justice (DOJ) Epstein disclosures datasets available at https://www.justice.gov/epstein/doj-disclosures. It processes each dataset sequentially, handling pagination, and saves selected response headers to text files without downloading the actual file contents. It also compiles a universal log of file names with their Last-Modified dates and ETags.
 
