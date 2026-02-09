@@ -1,3 +1,12 @@
+<div align="center">
+    <img src="https://img.shields.io/github/last-commit/beak2825/epstein-files-archive" alt="GitHub last commit"/>
+    <img src="https://img.shields.io/github/commit-activity/w/beak2825/epstein-files-archive" alt="GitHub commit activity"/>
+    <img src="https://img.shields.io/github/contributors/beak2825/epstein-files-archive" alt="GitHub contributors"/>
+    <br>
+    <img src="https://img.shields.io/badge/Found%20Files%20Deleted:-399-red" alt="Files that were deleted and found (YET)."/>
+    <img src="https://img.shields.io/badge/Found%20Files%20Changed:-119-orange" alt="Files that were changed and found (YET)."/>
+</div>
+
 # epstein-files-archive
 This is not archiving the files themselves, this is only archiving the server responses, useful for checksum and Last-Modified
 ETags from justice.gov are made in MD5 format. (Edit: This is sometimes true, only regular files contain the MD5 with a -part at the end, but ZIP files don't match this)
