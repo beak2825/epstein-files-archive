@@ -1,0 +1,12 @@
+Status-Code: 200
+Accept-Ranges: bytes
+Alt-Svc: h3=":443"; ma=93600
+Cache-Control: max-age=0, no-cache, no-store
+Content-Length: 406522
+Content-Type: audio/mp4
+Date: Tue, 10 Feb 2026 13:40:54 GMT
+Etag: "8c8b6a5a185a9a3b3e92e85c8478b9aa"
+Expires: Tue, 10 Feb 2026 13:40:54 GMT
+Last-Modified: Fri, 30 Jan 2026 06:15:40 GMT
+Pragma: no-cache
+Server: AmazonS3
