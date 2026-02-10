@@ -1,10 +1,10 @@
 {
   "hits": {
     "total": {
-      "value": 4732,
+      "value": 4731,
       "relation": "eq"
     },
-    "max_score": 12.900003,
+    "max_score": 12.900013,
     "hits": [
       {
         "_source": {
@@ -332,37 +332,37 @@
       },
       {
         "_source": {
-          "documentId": "95107e13",
-          "chunkIndex": 2,
-          "totalChunks": 3,
-          "charStart": 13477,
-          "charEnd": 21229,
-          "chunkSize": 7752,
+          "documentId": "f40d56ae",
+          "chunkIndex": 6,
+          "totalChunks": 7,
+          "charStart": 41996,
+          "charEnd": 48160,
+          "chunkSize": 6164,
           "isChunked": true,
-          "startPage": 3,
-          "endPage": 6,
-          "ORIGIN_FILE_NAME": "EFTA01660679.pdf",
-          "ORIGIN_FILE_URI": "https://www.justice.gov/epstein/files/DataSet 10/EFTA01660679.pdf",
+          "startPage": 13,
+          "endPage": 15,
+          "ORIGIN_FILE_NAME": "EFTA00263447.pdf",
+          "ORIGIN_FILE_URI": "https://www.justice.gov/epstein/files/DataSet 9/EFTA00263447.pdf",
           "bucket": "amazon-s3x-sync",
-          "key": "DataSet 10/EFTA01660679.pdf",
+          "key": "DataSet 9/EFTA00263447.pdf",
           "contentType": "application/pdf",
-          "fileSize": 473834,
-          "totalWords": 3533,
-          "totalCharacters": 21229,
-          "processedAt": "2026-02-04T00:50:59Z",
-          "indexedAt": "2026-02-04T00:51:00Z",
+          "fileSize": 5161118,
+          "totalWords": 7759,
+          "totalCharacters": 48160,
+          "processedAt": "2026-01-30T16:45:29Z",
+          "indexedAt": "2026-01-30T16:45:30Z",
           "source": "document-indexing-pipeline"
         },
         "fields": {
           "ORIGIN_FILE_NAME": [
-            "EFTA01660679.pdf"
+            "EFTA00263447.pdf"
           ]
         },
         "highlight": {
           "content": [
-            "Victim 1 saw Donald \u003Cem\u003ETrump\u003C/em\u003E and wanted to meet him. A\n\u003Cem\u003ETrump\u003C/em\u003E\nunknown man approached her and offered to introduce her to \u003Cem\u003ETrump\u003C/em\u003E.",
-            "\u003Cem\u003Etrump\u003C/em\u003E would auction them\nDonald \u003Cem\u003ETrump\u003C/em\u003E, Donald \u003Cem\u003ETrump\u003C/em\u003E\nEFTA01660683\n\noff He measured the children's vulva and vaginas by entering a finger and\nJr., Ivanka",
-            "The guests were elder men and included Elon\n\u003Cem\u003ETrump\u003C/em\u003E, Allan Dershowitz, Bob\nMusk. Don jr. \u003Cem\u003ETrump\u003C/em\u003E, Ivanka \u003Cem\u003ETrump\u003C/em\u003E, and Eric \u003Cem\u003ETrump\u003C/em\u003E were there."
+            "His wife Ivana managed it until 1988. [64][65]\nEntrance of the \u003Cem\u003ETrump\u003C/em\u003E Taj Mahal in\n\u003Cem\u003ETrump\u003C/em\u003E bought a third Atlantic City venue in 1988, the \u003Cem\u003ETrump\u003C/em\u003E\nAtlantic",
+            "CALLED\nTARGETED VICTIM PRINCESS\nIn 1995, \u003Cem\u003ETrump\u003C/em\u003E founded \u003Cem\u003ETrump\u003C/em\u003E Hotels & Casino Resorts (THCR), which assumed ownership of\n\u003Cem\u003ETrump\u003C/em\u003E Plaza, \u003Cem\u003ETrump\u003C/em\u003E Castle, and",
+            "and\nmanages another three \u003Cem\u003ETrump\u003C/em\u003E-branded courses worldwide as of July 2020. [74][75]\n\u003Cem\u003ETrump\u003C/em\u003E visited a \u003Cem\u003ETrump\u003C/em\u003E Organization property on 428 (nearly one in three"
           ]
         }
       }
@@ -370,7 +370,7 @@
   },
   "aggregations": {
     "unique_count": {
-      "value": 4732
+      "value": 4731
     }
   }
 }
