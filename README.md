@@ -26,6 +26,7 @@ This Python script fetches metadata (HTTP headers) for files from the U.S. Depar
 They are deleting/redacting mentions of "Trump" see https://github.com/beak2825/epstein-files-archive/commit/ae6e32bed1d135dcb3c14e84795cad1faf8ef5f5 and https://github.com/beak2825/epstein-files-archive/commit/71f55ba47d72d428fbdbb7f5c8e47e830dd22688  
 As you can see the amount of mentions is now 4731 instead of 4732  
 
+The DOJ does not update the .zip files after they are posted it seems, so if a document is updated use the zip files.
 They unredacted part of a file 3 hours after @RepThomasMassie spotlighted it EFTA00173201  
 They deleted all mentions of "Juan Ruiz Toro"  EFTA00031428 EFTA00009897  
 They deleted EFTA00020508 a few days after the media spotlighted it for certain statements of Donald Trump  
