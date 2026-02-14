@@ -18,7 +18,7 @@ ETags from justice.gov are made in MD5 format. (Edit: the -part at the end is no
 This Python script fetches metadata (HTTP headers) for files from the U.S. Department of Justice (DOJ) Epstein disclosures datasets available at https://www.justice.gov/epstein/doj-disclosures. It processes each dataset sequentially, handling pagination, and saves selected response headers to text files without downloading the actual file contents. It also compiles a universal log of file names with their Last-Modified dates and ETags.
 
 
-[](https://komarev.com/ghpvc/?username=beak2825-epstein-files-archive&label=REPO+VIEWS)
+![](https://komarev.com/ghpvc/?username=beak2825-epstein-files-archive&label=REPO+VIEWS)
 
 Table of Data Sets and known deleted/changed files (we know which ones were deleted/changed)
 | Data Set #  | Files Changed/Deleted |
