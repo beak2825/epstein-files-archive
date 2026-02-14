@@ -18,23 +18,23 @@ ETags from justice.gov are made in MD5 format. (Edit: the -part at the end is no
 This Python script fetches metadata (HTTP headers) for files from the U.S. Department of Justice (DOJ) Epstein disclosures datasets available at https://www.justice.gov/epstein/doj-disclosures. It processes each dataset sequentially, handling pagination, and saves selected response headers to text files without downloading the actual file contents. It also compiles a universal log of file names with their Last-Modified dates and ETags.
 
 
-![](https://komarev.com/ghpvc/?username=beak2825-epstein-files-archive&label=REPO+VIEWS)
+[](https://komarev.com/ghpvc/?username=beak2825-epstein-files-archive&label=REPO+VIEWS)
 
 Table of Data Sets and known deleted/changed files (we know which ones were deleted/changed)
 | Data Set #  | Files Changed/Deleted |
 | ------------- | ------------- |
-| 1  | 65 Changed, 8 ![Deleted](https://raw.githubusercontent.com/beak2825/epstein-files-archive/refs/heads/main/DataSet1_Deleted.txt)   |
-| 2  | 1 ![Changed](https://raw.githubusercontent.com/beak2825/epstein-files-archive/refs/heads/main/DataSet2_Changed.txt), 1 ![Deleted](https://raw.githubusercontent.com/beak2825/epstein-files-archive/refs/heads/main/DataSet2_Deleted.txt)   |
-| 3  | 3 ![Changed](https://raw.githubusercontent.com/beak2825/epstein-files-archive/refs/heads/main/DataSet3_Changed.txt), 2 ![Deleted](https://raw.githubusercontent.com/beak2825/epstein-files-archive/refs/heads/main/DataSet3_Deleted.txt)  |
-| 4  | 2 ![Changed](https://raw.githubusercontent.com/beak2825/epstein-files-archive/refs/heads/main/DataSet4_Changed.txt)  |
-| 5  | 1 ![Changed](https://raw.githubusercontent.com/beak2825/epstein-files-archive/refs/heads/main/DataSet5_Changed.txt)  |
-| 6  | 2 ![Changed](https://raw.githubusercontent.com/beak2825/epstein-files-archive/refs/heads/main/DataSet6_Changed.txt)  |
+| 1  | 65 Changed, 8 [Deleted](https://raw.githubusercontent.com/beak2825/epstein-files-archive/refs/heads/main/DataSet1_Deleted.txt)   |
+| 2  | 1 [Changed](https://raw.githubusercontent.com/beak2825/epstein-files-archive/refs/heads/main/DataSet2_Changed.txt), 1 [Deleted](https://raw.githubusercontent.com/beak2825/epstein-files-archive/refs/heads/main/DataSet2_Deleted.txt)   |
+| 3  | 3 [Changed](https://raw.githubusercontent.com/beak2825/epstein-files-archive/refs/heads/main/DataSet3_Changed.txt), 2 [Deleted](https://raw.githubusercontent.com/beak2825/epstein-files-archive/refs/heads/main/DataSet3_Deleted.txt)  |
+| 4  | 2 [Changed](https://raw.githubusercontent.com/beak2825/epstein-files-archive/refs/heads/main/DataSet4_Changed.txt)  |
+| 5  | 1 [Changed](https://raw.githubusercontent.com/beak2825/epstein-files-archive/refs/heads/main/DataSet5_Changed.txt)  |
+| 6  | 2 [Changed](https://raw.githubusercontent.com/beak2825/epstein-files-archive/refs/heads/main/DataSet6_Changed.txt)  |
 | 7  | N/A  |
-| 8  | 21 ![Changed](https://raw.githubusercontent.com/beak2825/epstein-files-archive/refs/heads/main/DataSet8_Changed.txt), 10 ![Deleted](https://raw.githubusercontent.com/beak2825/epstein-files-archive/refs/heads/main/DataSet8_Deleted.txt) |
-| 9  | 401 Changed, 865 ![Deleted](https://raw.githubusercontent.com/beak2825/epstein-files-archive/refs/heads/main/DataSet9_Deleted.txt)  |
-| 10  | 180 Counting Changed, 6 ![Deleted](https://raw.githubusercontent.com/beak2825/epstein-files-archive/refs/heads/main/DataSet10_Deleted.txt)  |
+| 8  | 21 [Changed](https://raw.githubusercontent.com/beak2825/epstein-files-archive/refs/heads/main/DataSet8_Changed.txt), 10 [Deleted](https://raw.githubusercontent.com/beak2825/epstein-files-archive/refs/heads/main/DataSet8_Deleted.txt) |
+| 9  | 401 Changed, 865 [Deleted](https://raw.githubusercontent.com/beak2825/epstein-files-archive/refs/heads/main/DataSet9_Deleted.txt)  |
+| 10  | 180 Counting Changed, 6 [Deleted](https://raw.githubusercontent.com/beak2825/epstein-files-archive/refs/heads/main/DataSet10_Deleted.txt)  |
 | 11  | 92 Changed  |
-| 12  | 2 ![Changed](https://raw.githubusercontent.com/beak2825/epstein-files-archive/refs/heads/main/DataSet12_Changed.txt)  |
+| 12  | 2 [Changed](https://raw.githubusercontent.com/beak2825/epstein-files-archive/refs/heads/main/DataSet12_Changed.txt)  |
 | 13-23 | Unreleased  |
 
 
