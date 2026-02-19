@@ -1,0 +1,12 @@
+Status-Code: 200
+Accept-Ranges: bytes
+Alt-Svc: h3=":443"; ma=93600
+Cache-Control: max-age=0, no-cache, no-store
+Content-Length: 20566
+Content-Type: application/pdf
+Date: Thu, 19 Feb 2026 18:35:44 GMT
+Etag: "abe4777b7cfe1ca85f4b4b4cdcf64572"
+Expires: Thu, 19 Feb 2026 18:35:44 GMT
+Last-Modified: Fri, 30 Jan 2026 05:52:48 GMT
+Pragma: no-cache
+Server: AmazonS3
