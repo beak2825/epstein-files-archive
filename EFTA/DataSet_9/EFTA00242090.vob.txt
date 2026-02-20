@@ -1,0 +1,12 @@
+Status-Code: 200
+Accept-Ranges: bytes
+Alt-Svc: h3=":443"; ma=93600
+Cache-Control: max-age=0, no-cache, no-store
+Content-Length: 1073709056
+Content-Type: binary/octet-stream
+Date: Fri, 20 Feb 2026 10:30:06 GMT
+Etag: "b02712297267b302aa9ccfef1e9ce267-128"
+Expires: Fri, 20 Feb 2026 10:30:06 GMT
+Last-Modified: Fri, 30 Jan 2026 05:22:42 GMT
+Pragma: no-cache
+Server: AmazonS3

@@ -1,0 +1,12 @@
+Status-Code: 200
+Accept-Ranges: bytes
+Alt-Svc: h3=":443"; ma=93600
+Cache-Control: max-age=0, no-cache, no-store
+Content-Length: 8704
+Content-Type: video/avi
+Date: Fri, 20 Feb 2026 10:48:10 GMT
+Etag: "267921d5bf4c7e9350a746829a6a056f"
+Expires: Fri, 20 Feb 2026 10:48:10 GMT
+Last-Modified: Fri, 30 Jan 2026 05:25:18 GMT
+Pragma: no-cache
+Server: AmazonS3
