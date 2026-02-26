@@ -12,7 +12,7 @@
 <img width="1200" height="400" alt="redacting" src="https://github.com/user-attachments/assets/6ff30242-0b17-490a-a5ab-790e77b79c04">  
 
 
-
+404 File Fixer: https://beak2825.github.io/epstein-files-archive  
 Old VS New, see [old VS new redactions](https://github.com/beak2825/epstein-files-archive/blob/main/REDACTIONS.md)  
 
 # epstein-files-archive
