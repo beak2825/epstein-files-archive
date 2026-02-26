@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="https://img.shields.io/badge/As%20seen%20on-epsteinexposed.com-8B0000?style=flat&logo=vercel&logoColor=white" alt="epsteinexposed.com badge ">
+    <img src="https://img.shields.io/badge/As%20seen%20on-epsteinexposed.com-8B0000?style=flat&logo=vercel&logoColor=white" alt="epsteinexposed.com badge "> 
     <img src="https://img.shields.io/github/last-commit/beak2825/epstein-files-archive" alt="GitHub last commit">
     <img src="https://img.shields.io/github/commit-activity/w/beak2825/epstein-files-archive" alt="GitHub commit activity">
     <img src="https://img.shields.io/github/contributors/beak2825/epstein-files-archive" alt="GitHub contributors">
