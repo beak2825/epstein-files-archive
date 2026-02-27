@@ -16,6 +16,7 @@
 Old VS New, see [old VS new redactions](https://github.com/beak2825/epstein-files-archive/blob/main/REDACTIONS.md)  
 
 # epstein-files-archive
+I've just now realized HASHES.txt got many lines removed, I didn't realize for a while but I will make a script to automatically fix this using the txt files and upload it here.  
 If you saw evidence of files being deleted or modified in the Epstein Files, you probably want to see how many were modified/deleted, or a list of the deleted or modified ones.
 This repo is just for that as it keeps track of current modifications and when a file was modified.
 
