@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Epstein Files 404 Fixer</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: #0d0d0d;
+      color: #e0e0e0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 32px 20px 60px;
+    }
+
+    h1 { color: #c9e0ff; font-size: 1.35em; margin-bottom: 5px; letter-spacing: 0.4px; }
+    .subtitle { color: #555; font-size: 0.8em; margin-bottom: 24px; text-align: center; max-width: 560px; line-height: 1.6; }
+
+    .main-box {
+      background: #161616;
+      border: 1px solid #2a2a2a;
+      border-radius: 10px;
+      padding: 24px;
+      max-width: 720px;
+      width: 100%;
+      margin-bottom: 16px;
+    }
+
+    .input-row { display: flex; gap: 10px; margin-bottom: 9px; }
+
+    input[type="text"] {
+      flex: 1;
+      background: #0d0d0d;
+      border: 1px solid #333;
+      border-radius: 6px;
+      color: #e0e0e0;
+      font-family: monospace;
+      font-size: 0.93em;
+      padding: 10px 14px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    input[type="text"]:focus { border-color: #4a7fcb; }
+
+    .btn {
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.88em;
+      padding: 9px 16px;
+      transition: background 0.2s;
+      white-space: nowrap;
+      border: 1px solid;
+    }
+    .btn-blue  { background: #1e3a6e; border-color: #2e5090; color: #aed0ff; }
+    .btn-blue:hover { background: #254a8a; }
+    .btn-blue:disabled { background: #1a1a1a; border-color: #252525; color: #444; cursor: default; }
+    .btn-green { background: #1a3a1a; border-color: #2a5a2a; color: #7ddd8a; }
+    .btn-green:hover { background: #1f4a1f; }
+    .btn-share { background: #2a2a1a; border-color: #4a4a1a; color: #cccc55; }
+    .btn-share:hover { background: #3a3a1a; }
+
+    .hint { color: #444; font-size: 0.76em; }
+    .hint code { color: #6a8ebc; background: #1a1a1a; padding: 1px 5px; border-radius: 3px; }
+
+    #status-box { display: none; }
+    .section-label { font-size: 0.72em; color: #444; text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 7px; }
+    #status-text { font-size: 0.82em; color: #888; line-height: 1.95; font-family: monospace; }
+    .log-trying { color: #666; }
+    .log-ok     { color: #5dbb7f; }
+    .log-fail   { color: #6a3030; }
+    .log-fatal  { color: #ff6b6b; font-weight: bold; font-size: 1.05em; font-family: sans-serif; }
+
+    #result-bar {
+      display: none;
+      margin-top: 16px;
+      background: #0f1f0f;
+      border: 1px solid #1e3a1e;
+      border-radius: 8px;
+      padding: 14px 16px;
+    }
+    .found-label { color: #5dbb7f; font-weight: bold; font-size: 0.9em; margin-bottom: 8px; }
+    #result-url { color: #7aabff; font-size: 0.8em; word-break: break-all; margin-bottom: 10px; }
+    .action-row { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    #file-meta {
+      display: none;
+      margin-top: 14px;
+      background: #111;
+      border: 1px solid #222;
+      border-radius: 6px;
+      padding: 12px 14px;
+      font-family: monospace;
+      font-size: 0.8em;
+      line-height: 2.1;
+      color: #888;
+    }
+    #file-meta .mk { color: #555; display: inline-block; width: 110px; }
+    #file-meta .mv { color: #b0c8e8; }
+    #file-meta .mn { color: #555; font-style: italic; }
+
+    #pdf-section {
+      display: none;
+      max-width: 720px;
+      width: 100%;
+      margin-bottom: 16px;
+    }
+    #pdf-loading {
+      display: none;
+      text-align: center;
+      padding: 40px;
+      color: #555;
+      font-size: 0.85em;
+      border: 1px solid #2a2a2a;
+      border-radius: 8px;
+      background: #111;
+    }
+    #pdf-frame {
+      display: none;
+      width: 100%;
+      height: 82vh;
+      border: 1px solid #2a2a2a;
+      border-radius: 8px;
+      background: #fff;
+    }
+    object#pdf-frame { display: none; }
+    #pdf-fallback {
+      display: none;
+      background: #161616;
+      border: 1px solid #2a2a2a;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      color: #666;
+      font-size: 0.85em;
+      line-height: 1.8;
+    }
+    #pdf-fallback a { color: #7aabff; }
+
+    .notice {
+      background: #131008;
+      border: 1px solid #2e2408;
+      border-radius: 8px;
+      padding: 13px 16px;
+      max-width: 720px;
+      width: 100%;
+      font-size: 0.78em;
+      color: #9a8850;
+      line-height: 1.7;
+    }
+    .notice strong { color: #c4a84a; }
+    .notice a { color: #7aabff; }
+
+    .spinner {
+      display: inline-block;
+      width: 9px; height: 9px;
+      border: 2px solid #333;
+      border-top-color: #7aabff;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      margin-right: 5px;
+      vertical-align: middle;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .copied-toast {
+      position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+      background: #223322; border: 1px solid #3a5a3a; color: #7ddd8a;
+      padding: 8px 20px; border-radius: 20px; font-size: 0.82em;
+      opacity: 0; transition: opacity 0.3s; pointer-events: none;
+      z-index: 999;
+    }
+    .copied-toast.show { opacity: 1; }
+  </style>
+</head>
+<body>
+
+<h1>📁 Epstein Files 404 Fixer</h1>
+<p class="subtitle">Enter a filename or URL — all known archives are tried automatically.<br>
+<span id="home-visits" style="font-size:0.85em;color:#444;"></span></p>
+
+<div class="main-box">
+  <div class="input-row">
+    <input type="text" id="query-input" placeholder="EFTA00001225  or  https://..." autofocus />
+    <button class="btn btn-blue" id="go-btn">Open</button>
+  </div>
+  <div class="hint">
+    <code>EFTA00001225</code> &nbsp;·&nbsp; <code>EFTA00001225.pdf</code> &nbsp;·&nbsp; full URL &nbsp;·&nbsp; append <code>?EFTA00001225</code> to page URL
+  </div>
+
+  <div id="status-box">
+    <div class="section-label">Search log</div>
+    <div id="status-text"></div>
+  </div>
+
+  <div id="result-bar">
+    <div class="found-label">✅ File found</div>
+    <div id="result-url"></div>
+    <div class="action-row">
+      <button class="btn btn-green" id="open-btn">Open in new tab ↗</button>
+      <button class="btn btn-share" id="share-btn">🔗 Share link</button>
+    </div>
+    <div id="file-meta"></div>
+    <div id="visit-count" style="display:none;margin-top:8px;font-size:0.78em;color:#888;font-family:monospace;"></div>
+  </div>
+</div>
+
+<div id="pdf-section">
+  <div class="section-label" style="color:#444;font-size:0.72em;text-transform:uppercase;letter-spacing:0.6px;margin-bottom:10px;">Document</div>
+  <div id="pdf-loading"><span class="spinner" style="width:14px;height:14px;border-width:3px;"></span> Loading…</div>
+  <object id="pdf-frame" type="application/pdf" title="PDF Viewer"></object>
+  <div id="pdf-fallback">
+    <p>This file could not be displayed inline in your browser.</p>
+  </div>
+</div>
+
+<div class="notice">
+  ⚠️ <strong>Notice:</strong> Some files in the DOJ release may have been modified after initial publication.
+  A community-maintained list of changed files is tracked at
+  <a href="https://github.com/beak2825/epstein-files-archive" target="_blank">github.com/beak2825/epstein-files-archive</a>.
+  Archived copies you find here may predate those modifications.
+</div>
+
+<div class="copied-toast" id="toast">Link copied!</div>
+
+<script>
+const KINO_BASE    = "https://assets.getkino.com/documents/";
+const WAYBACK_BASE = "https://web.archive.org/web/0if_/https://www.justice.gov/epstein/files/DataSet%20";
+const DATASETS     = [1,2,3,4,5,6,7,8,9,10,11,12];
+
+// ── State ──────────────────────────────────────────────────────────────────
+let currentUrl      = null;
+let currentParam    = null;
+let autoDisplayPdf  = false;   // only true when triggered by ?param in URL
+let activeFetchId   = 0;       // incremented on each search to cancel stale runs
+let activeBlobUrl   = null;    // currently loaded blob URL
+
+// ── DOM refs (cached once) ─────────────────────────────────────────────────
+const elGoBtn      = document.getElementById("go-btn");
+const elInput      = document.getElementById("query-input");
+const elStatusBox  = document.getElementById("status-box");
+const elStatusText = document.getElementById("status-text");
+const elResultBar  = document.getElementById("result-bar");
+const elResultUrl  = document.getElementById("result-url");
+const elFileMeta   = document.getElementById("file-meta");
+const elPdfSection = document.getElementById("pdf-section");
+const elPdfLoading = document.getElementById("pdf-loading");
+const elPdfFrame   = document.getElementById("pdf-frame");
+const elPdfFallbck = document.getElementById("pdf-fallback");
+const elToast      = document.getElementById("toast");
+
+// ── Helpers ────────────────────────────────────────────────────────────────
+function normalizeInput(raw) {
+  raw = raw.trim();
+  if (raw.startsWith("?")) raw = raw.slice(1);
+  if (raw.startsWith("http://") || raw.startsWith("https://")) return { isUrl: true, value: raw };
+  if (!raw.toLowerCase().endsWith(".pdf")) raw += ".pdf";
+  return { isUrl: false, value: raw };
+}
+
+function kinoUrl(f)        { return KINO_BASE + f; }
+function waybackUrl(f, ds) { return WAYBACK_BASE + ds + "/" + encodeURIComponent(f); }
+
+function log(cls, msg) {
+  elStatusText.insertAdjacentHTML("beforeend", `<span class="${cls}">${msg}</span><br>`);
+}
+
+// ── Fetch file bytes + headers ─────────────────────────────────────────────
+async function fetchFile(url, fetchId) {
+  try {
+    const r = await fetch(url, { signal: AbortSignal.timeout(30000) });
+    if (fetchId !== activeFetchId) return { ok: false, stale: true };
+    if (!r.ok) return { ok: false };
+    const blob = await r.blob();
+    if (fetchId !== activeFetchId) return { ok: false, stale: true };
+    return {
+      ok:           true,
+      blob,
+      etag:         r.headers.get("etag"),
+      lastModified: r.headers.get("last-modified"),
+    };
+  } catch {
+    return { ok: false };
+  }
+}
+
+// ── Wayback availability check ─────────────────────────────────────────────
+async function waybackAvailable(filename, ds) {
+  const target = "https://www.justice.gov/epstein/files/DataSet " + ds + "/" + filename;
+  const api    = "https://archive.org/wayback/available?url=" + encodeURIComponent(target);
+  try {
+    const r = await fetch(api, { signal: AbortSignal.timeout(7000) });
+    const j = await r.json();
+    return !!(j.archived_snapshots?.closest?.available);
+  } catch { return false; }
+}
+
+// ── Show metadata ──────────────────────────────────────────────────────────
+function showMeta(etag, lastModified) {
+  const cleanEtag = etag ? etag.replace(/^(W\/)?"|"$/g, "") : null;
+
+  let html = "";
+  html += `<div><span class="mk">ETag</span> `;
+  html += cleanEtag
+    ? `<span class="mv">${cleanEtag}</span> <span class="mn">(MD5)</span>`
+    : `<span class="mn">not returned by server</span>`;
+  html += `</div>`;
+
+  html += `<div><span class="mk">Last-Modified</span> `;
+  html += lastModified
+    ? `<span class="mv">${lastModified}</span>`
+    : `<span class="mn">not returned by server</span>`;
+  html += `</div>`;
+
+  elFileMeta.innerHTML = html;
+  elFileMeta.style.display = "block";
+}
+
+// ── Show result bar ────────────────────────────────────────────────────────
+function showResult(url, etag, lastModified) {
+  currentUrl = url;
+  // Don't expose the source URL - just show the file was found
+  elResultUrl.textContent = "";
+  elResultBar.style.display = "block";
+  showMeta(etag, lastModified);
+}
+
+// ── Track visits via Google Apps Script ───────────────────────────────────
+async function trackVisit(filename) {
+  const fileKey = filename.replace(/\.pdf$/i, "");
+  showVisitCount(null); // show "loading…" immediately
+  try {
+    const res = await fetch(
+      `https://script.google.com/macros/s/AKfycbzlPWKP6dSQ_nDI814pAHRDt-F40suw0Uh-NgkpF1gEdbTCg2xa3audXV_aQkc-MUP1/exec?file=${encodeURIComponent(fileKey)}`,
+      { method: "GET", redirect: "follow" }
+    );
+    const text = await res.text(); // read as text first — Apps Script sometimes returns HTML on error
+    const data = JSON.parse(text);
+    if (data && typeof data.visits === "number") {
+      showVisitCount(data.visits);
+    }
+  } catch {
+    // Hide the loading placeholder if tracking failed
+    const el = document.getElementById("visit-count");
+    if (el) el.style.display = "none";
+  }
+}
+
+function showVisitCount(visits) {
+  const el = document.getElementById("visit-count");
+  if (!el) return;
+  el.style.display = "block";
+  if (visits === null) {
+    el.style.color   = "#555";
+    el.textContent   = "👁 loading views…";
+  } else {
+    el.style.color   = "#888";
+    el.textContent   = `👁 ${visits.toLocaleString()} view${visits !== 1 ? "s" : ""}`;
+  }
+}
+
+// ── Display PDF from blob ──────────────────────────────────────────────────
+function displayPdf(blob, fallbackUrl, filename) {
+  // Revoke any previous blob URL
+  if (activeBlobUrl) {
+    URL.revokeObjectURL(activeBlobUrl);
+    activeBlobUrl = null;
+  }
+
+  // Show section and loading, hide frame/fallback
+  elPdfSection.style.display = "block";
+  elPdfLoading.style.display = "block";
+  elPdfFallbck.style.display = "none";
+
+  // KEY FIX: <object> ignores data attribute changes after first load.
+  // Replace the element entirely with a fresh clone each time.
+  const oldFrame = document.getElementById("pdf-frame");
+  const newFrame = document.createElement("object");
+  newFrame.id    = "pdf-frame";
+  newFrame.type  = "application/pdf";
+  newFrame.title = "PDF Viewer";
+  newFrame.style.cssText = "display:none;width:100%;height:82vh;border:1px solid #2a2a2a;border-radius:8px;background:#fff;";
+  oldFrame.replaceWith(newFrame);
+
+  try {
+    const pdfBlob = new Blob([blob], { type: "application/pdf" });
+    const blobUrl = URL.createObjectURL(pdfBlob);
+    activeBlobUrl = blobUrl;
+    newFrame.setAttribute("data", blobUrl);
+    newFrame.style.display     = "block";
+    elPdfLoading.style.display = "none";
+  } catch {
+    elPdfLoading.style.display = "none";
+    elPdfFallbck.style.display = "block";
+  }
+
+  // Track the visit after PDF is shown
+  if (filename) trackVisit(filename);
+}
+
+// ── Reset all output UI ────────────────────────────────────────────────────
+function resetUI() {
+  elStatusText.innerHTML     = "";
+  elResultBar.style.display  = "none";
+  elFileMeta.style.display   = "none";
+  elPdfSection.style.display = "none";
+  elPdfFallbck.style.display = "none";
+  elPdfLoading.style.display = "none";
+
+  // pdf-frame may have been replaced; always grab fresh reference
+  const frame = document.getElementById("pdf-frame");
+  if (frame) frame.style.display = "none";
+
+  // Revoke old blob
+  if (activeBlobUrl) {
+    URL.revokeObjectURL(activeBlobUrl);
+    activeBlobUrl = null;
+  }
+
+  // Clear visit count
+  const vc = document.getElementById("visit-count");
+  if (vc) { vc.style.display = "none"; vc.textContent = ""; }
+}
+
+// ── Main search ────────────────────────────────────────────────────────────
+async function startSearch() {
+  const raw = elInput.value.trim();
+  if (!raw) return;
+
+  // Cancel any in-flight search
+  const myId = ++activeFetchId;
+
+  currentUrl   = null;
+  currentParam = raw.startsWith("?") ? raw.slice(1) : raw;
+
+  resetUI();
+  elStatusBox.style.display = "block";
+  elGoBtn.disabled = true;
+
+  const { isUrl, value } = normalizeInput(raw);
+
+  // Full URL — wrap with Wayback, no PDF auto-display (can't fetch cross-origin easily)
+  if (isUrl) {
+    const url = "https://web.archive.org/web/0if_/" + value;
+    log("log-ok", "✓ Full URL — wrapping with Wayback");
+    showResult(url, null, null);
+    elGoBtn.disabled = false;
+    return;
+  }
+
+  const filename = value;
+  currentParam   = filename;
+  log("log-trying", `Searching: <strong>${filename}</strong>`);
+  elStatusText.insertAdjacentHTML("beforeend", "<br>");
+
+  // ── 1. getkino ──────────────────────────────────────────────────────────
+  log("log-trying", `<span class="spinner"></span>getkino archive…`);
+  const kino = await fetchFile(kinoUrl(filename), myId);
+  if (kino.stale) return; // newer search started
+
+  if (kino.ok) {
+    log("log-ok", "✓ Found on getkino");
+    showResult(kinoUrl(filename), kino.etag, kino.lastModified);
+    if (autoDisplayPdf) displayPdf(kino.blob, kinoUrl(filename), filename);
+    elGoBtn.disabled = false;
+    return;
+  }
+  log("log-fail", "✗ getkino — not found");
+
+  // ── 2. Wayback DataSet 1–12 ─────────────────────────────────────────────
+  for (const ds of DATASETS) {
+    if (myId !== activeFetchId) return; // cancelled
+    log("log-trying", `<span class="spinner"></span>Wayback DataSet ${ds}…`);
+    const avail = await waybackAvailable(filename, ds);
+
+    if (myId !== activeFetchId) return; // cancelled
+
+    if (avail) {
+      const url = waybackUrl(filename, ds);
+      log("log-ok", `✓ Found — Wayback DataSet ${ds}`);
+
+      const wb = await fetchFile(url, myId);
+      if (wb.stale) return;
+
+      showResult(url, wb.etag, wb.lastModified);
+      if (autoDisplayPdf && wb.ok) displayPdf(wb.blob, url, filename);
+      elGoBtn.disabled = false;
+      return;
+    }
+    log("log-fail", `✗ DataSet ${ds}`);
+  }
+
+  // ── All failed ───────────────────────────────────────────────────────────
+  elStatusText.insertAdjacentHTML("beforeend", "<br>");
+  log("log-fatal", "All archives failed 😞");
+  elStatusText.insertAdjacentHTML("beforeend",
+    `<br><span style="color:#555;font-size:0.9em;"><strong>${filename}</strong> wasn't found in any archive.<br>
+    Check <a href="https://github.com/beak2825/epstein-files-archive" target="_blank" style="color:#7aabff;">the community tracker</a> for more info.</span>`);
+
+  elGoBtn.disabled = false;
+}
+
+// ── Buttons ────────────────────────────────────────────────────────────────
+document.getElementById("open-btn").addEventListener("click", () => {
+  if (currentUrl) window.open(currentUrl, "_blank");
+});
+
+document.getElementById("share-btn").addEventListener("click", () => {
+  if (!currentParam) return;
+  const shareUrl = window.location.origin + window.location.pathname + "?" + currentParam;
+  navigator.clipboard.writeText(shareUrl)
+    .then(() => {
+      elToast.classList.add("show");
+      setTimeout(() => elToast.classList.remove("show"), 2200);
+    })
+    .catch(() => prompt("Copy this share link:", shareUrl));
+});
+
+elGoBtn.addEventListener("click", () => {
+  autoDisplayPdf = true;
+  startSearch();
+});
+
+elInput.addEventListener("keydown", e => {
+  if (e.key === "Enter") {
+    autoDisplayPdf = true;
+    startSearch();
+  }
+});
+
+// ── Boot: handle ?param in URL + HOME tracking ─────────────────────────────
+window.addEventListener("DOMContentLoaded", () => {
+  // Log HOME visit and show count
+  fetch(
+    `https://script.google.com/macros/s/AKfycbzlPWKP6dSQ_nDI814pAHRDt-F40suw0Uh-NgkpF1gEdbTCg2xa3audXV_aQkc-MUP1/exec?file=HOME`,
+    { method: "GET", redirect: "follow" }
+  )
+  .then(r => r.text())
+  .then(text => {
+    const data = JSON.parse(text);
+    if (data && typeof data.visits === "number") {
+      const el = document.getElementById("home-visits");
+      if (el) el.textContent = `👁 ${data.visits.toLocaleString()} page visit${data.visits !== 1 ? "s" : ""}`;
+    }
+  })
+  .catch(() => {});
+
+  const qs = window.location.search;
+  if (qs && qs.length > 1) {
+    elInput.value  = qs.slice(1);
+    autoDisplayPdf = true;
+    startSearch();
+  }
+});
+</script>
+</body>
+</html>
