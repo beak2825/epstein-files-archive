@@ -16,7 +16,6 @@
 Old VS New, see [old VS new redactions](https://github.com/beak2825/epstein-files-archive/blob/main/REDACTIONS.md)  
 
 # epstein-files-archive
-I've just now realized HASHES.txt got many lines removed, I didn't realize for a while but I will make a script to automatically fix this using the txt files and upload it here.  
 If you saw evidence of files being deleted or modified in the Epstein Files, you probably want to see how many were modified/deleted, or a list of the deleted or modified ones.
 This repo is just for that as it keeps track of current modifications and when a file was modified.
 
@@ -24,6 +23,8 @@ This is not archiving the files themselves, this is only archiving the server re
 ETags from justice.gov are made in MD5 format. (Edit: the -part at the end is not included for the MD5, and zip files don't have the hash you think because they include extra folders like DATA,IMAGES,VOLUME on the DOJ direct zip downloads.)
 
 This Python script fetches metadata (HTTP headers) for files from the U.S. Department of Justice (DOJ) Epstein disclosures datasets available at https://www.justice.gov/epstein/doj-disclosures. It processes each dataset sequentially, handling pagination, and saves selected response headers to text files without downloading the actual file contents. It also compiles a universal log of file names with their Last-Modified dates and ETags.
+
+The neat thing about this program is it doesn't download any files, only gets the response using HEAD instead of GET, which just makes the process 10x faster.
 
 
 ![](https://komarev.com/ghpvc/?username=beak2825-epstein-files-archive&label=REPO+VIEWS)
