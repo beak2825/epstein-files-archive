@@ -7,6 +7,10 @@ import re
 import time
 from datetime import datetime, timedelta
 
+
+import http.client
+
+http.client._MAXHEADERS = 1000
 # Define headers and cookies
 headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36",

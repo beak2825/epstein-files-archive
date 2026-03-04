@@ -4,9 +4,9 @@ Alt-Svc: h3=":443"; ma=93600
 Cache-Control: max-age=0, no-cache, no-store
 Content-Length: 52731
 Content-Type: application/pdf
-Date: Mon, 16 Feb 2026 21:35:05 GMT
-Etag: "96375eedfd03e84b4eb304103bb6232e"
-Expires: Mon, 16 Feb 2026 21:35:05 GMT
-Last-Modified: Thu, 12 Feb 2026 14:07:34 GMT
+Date: Wed, 04 Mar 2026 00:04:16 GMT
+Etag: "c793d7d0dc3983e4c43605f7cdd54b15"
+Expires: Wed, 04 Mar 2026 00:04:16 GMT
+Last-Modified: Thu, 19 Feb 2026 23:13:02 GMT
 Pragma: no-cache
 Server: AmazonS3
