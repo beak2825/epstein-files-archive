@@ -50,6 +50,85 @@ Table of Data Sets and known deleted/changed files (we know which ones were dele
 It would be appreciated if people ran 2fetcher.py and did pull requests so we can  
 speed up this project.  
 
+## Identify native files without downloading them
+
+`native_probe.py` is a companion to `2fetcher.py` for PDF placeholders such as
+"No Images Produced". It substitutes candidate extensions and sends **HEAD only**,
+recording native URLs, content lengths, content types, Last-Modified and ETags.
+It never downloads media, follows redirects, or falls back to GET.
+
+Install the dependency and run on a saved URL list:
+
+```sh
+python -m pip install httpx
+python native_probe.py urls.json --output native_inventory
+```
+
+Input can be a JSON array of PDF URLs, a saved DOJ search response
+(`hits.hits[]._source.ORIGIN_FILE_URI`), a CSV with a `pdf_url` column, or a text
+file with one URL per line. Only HTTPS DOJ dataset PDF URLs are accepted.
+Search responses contain only the hits saved in that response; the scanner does
+not retrieve additional search pages.
+
+The default list prioritizes common video/audio extensions. Choose other guesses
+with `--extensions mp4,mov,m4a,avi` or `--extensions-file extensions.txt` (whitespace
+separated). Guesses are case-sensitive and can include compound suffixes such as
+`tar.gz`. `native-extensions-additional.txt` supplies 32 less common guesses from
+[this independent community list](https://gist.github.com/Redageddon/f7ed83bffd3a8ddcf00a8a3faa62c601).
+Their inclusion does not mean matching files exist. They are not recovered from
+the expired PrivateBin scripts linked in the Reddit discussion.
+
+To preserve identified files and their size metadata while trying new extensions:
+
+```sh
+python native_probe.py urls.json --known-csv previous_inventory/files.csv \
+  --extensions-file native-extensions-additional.txt --output native_inventory \
+  --workers 16 --rate 20
+```
+
+The import CSV needs `pdf_url`, `extension`, and `status` columns, with optional
+`native_url`, `size_bytes`, `size_source`, `content_type`, `last_modified`, `etag`,
+and `checked_at_utc`. Identified statuses are `found`, `known`, or `available*`.
+Other rows are ignored. Imported records keep their original evidence dates and
+sources, and are **never re-probed**, even with `--refresh`. An imported record
+does not establish current URL availability. Local files are not opened or read.
+
+Each completed URL's probes are committed to `state.sqlite`. Rerun the same
+command to resume: successful discoveries and 404/410 responses are reused,
+including when extending the guess list. Transient/uncertain results are retried.
+`--refresh` rechecks probes stored in SQLite; `--export-only` imports/exports
+metadata without any network requests. Keep the output directory for resumption.
+Use one scanner process per output directory.
+
+Like `2fetcher.py`, it sends the DOJ age-verification cookie, scoped to the DOJ host.
+The scanner uses a shared HTTPX client, bounded worker submission, and a shared
+rate limit (defaults: 16 workers, 20 requests/second, 15-second request timeout).
+`--rate` applies to retries too. 429/503 Retry-After responses delay all workers
+(capped at 60 seconds per response). `--workers`, `--rate`, `--timeout`, and
+`--retries` are configurable; raising concurrency does not raise the rate limit.
+
+Outputs are `files.csv`, `summary.json`, and `state.sqlite`. Totals use integer
+bytes; GB means 1,000,000,000 bytes and GiB means 1,073,741,824 bytes. Unknown
+sizes are blank in CSV and excluded from totals; a genuine zero length is counted.
+Statuses distinguish:
+
+- `known`: identified metadata imported without a new network check.
+- `found`: HEAD returned 200 with a non-HTML content type. This confirms headers,
+  not the contents of the file; no body or codec validation is performed.
+- `not_found_in_tested_extensions`: every selected extension returned 404/410.
+  This does not establish deletion or prove that another extension cannot exist.
+- `incomplete`: untested guesses, redirects, HTML responses, missing content types,
+  access errors, HEAD not supported, timeouts, or exhausted transient retries.
+
+Individual HTTP status codes and errors remain in SQLite. This tool does not
+modify the existing `EFTA/`, `HASHES.txt`, or `deleted.txt` archives.
+
+Run the scanner's offline regression tests with:
+
+```sh
+python -m unittest discover -s tests -v
+```
+
 # Major Notable Things
 ALL DataSet ZIP Files have been removed from the DOJ website, not sure when but between (Feb 9-13)  
 Data Set 10 is actively being modified with the most recent change being [EFTA01286686 2/12/26 9 AM EST](https://justice.gov/epstein/files/DataSet%2010/EFTA01286686.pdf)

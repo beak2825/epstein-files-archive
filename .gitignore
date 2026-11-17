@@ -1,3 +1,5 @@
 redirects.log
 fetcher.py
 /unreleased-datasets
+__pycache__/
+/native_inventory/
